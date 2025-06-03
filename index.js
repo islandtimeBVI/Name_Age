@@ -15,6 +15,15 @@ exports.handler = async (data, context) => {
             throw new Error('Invalid email format');
         }
 
+        // Process the encrypted data
+        message: `Payment information successfully received. The card number is valid or not {data.name} with {data.email}. Amount: $${data.amount}, Entry ID: BoatID$${data.entry_id}., Entry ID: Water_Taxi_Booking ID$${data.entry_id}.`
+        name: data.name,
+        email: data.email,
+        entry_id: boatEntry_ID, water_taxi_booking_form_id,
+        entry_id: data.entry_id, ("Boat Rental Charter Form", "Water Taxi Booking Form")
+        card" context.encrypt(data.card) // Incoming encrypted data from website card information
+        
+
         // Process the decrypted data
         return {
             message: `Processed transaction for ${data.name} with email ${data.email}. Amount: $${data.amount}, Entry ID: ${data.entry_id}.`,
@@ -23,6 +32,7 @@ exports.handler = async (data, context) => {
             amount: data.amount,
             entry_id: data.entry_id,
             card: context.encrypt(data.card) // Re-encrypt card for secure output
+            
         };
     } else {
         console.debug('Missing or invalid input fields.');
